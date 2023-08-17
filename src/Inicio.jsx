@@ -1,11 +1,12 @@
 import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import {
-	AddCatalogo,
 	GifGrid,
 	CounterWithCustomHook,
 	SimpleForm,
 	FormWithCustomHook,
+	MultipleCustomHooks,
+	Layout,
 } from './components';
 
 export const Inicio = ({ value }) => {
@@ -28,7 +29,9 @@ export const Inicio = ({ value }) => {
       </ol> */}
 			{/* <CounterWithCustomHook /> */}
 			{/* <SimpleForm /> */}
-			<FormWithCustomHook />
+			{/* <FormWithCustomHook /> */}
+			{/* <MultipleCustomHooks /> */}
+			<Layout />
 		</>
 	);
 };
