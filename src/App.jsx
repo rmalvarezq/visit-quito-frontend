@@ -1,40 +1,47 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { Inicio } from "./Inicio.jsx";
+import './App.css';
 import './styles/Styles.css';
+import HeatMap from './components/Heatmap/';
 
 function App() {
-  const [count, setCount] = useState(0);
+	// const xLabels = new Array(24).fill(0).map((_, i) => `${i}`);
+	const xLabels = new Array(24).fill(0).map((_, i) => `${i}`);
 
-  return (
-    <>
-      <div>
-        <Inicio value={0} />
-      </div>
-      {/* <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div> */}
-      {/* <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
-    </>
-  );
+  const yLabels = ['Lun', 'Mar', 'Mier', 'Jue', 'Sáb', 'Dom'];
+	const xLabelsVisibility = new Array(24)
+		.fill(0)
+		.map((_, i) => (i % 2 === 0 ? true : false));
+
+	// const yLabels = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Sábado', 'Domingo'];
+  
+	const data = new Array(yLabels.length)
+		.fill(0)
+		.map(() =>
+			new Array(xLabels.length)
+				.fill(0)
+				.map(() => Math.floor(Math.random() * 100))
+		);
+
+	return (
+		<>
+			<HeatMap
+				xLabels={xLabels}
+				yLabels={yLabels}
+				xLabelsLocation={'bottom'}
+				xLabelsVisibility={xLabelsVisibility}
+				xLabelWidth={50}
+				data={data}
+				squares
+				onClick={(x, y) => alert(`Clicked ${x}, ${y}`)}
+				cellStyle={(background, value, min, max, data, x, y) => ({
+					background: `rgb(12, 160, 244, ${1 - (max - value) / (max - min)})`,
+					fontSize: '11px',
+					fontFamily: 'Arial',
+				})}
+				cellRender={(value) => value && `${value}%`}
+				title={(value, unit, index) => value && `${value}-${xLabels[index]}`}
+			/>
+		</>
+	);
 }
 
 export default App;
