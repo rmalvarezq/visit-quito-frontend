@@ -1,24 +1,15 @@
 import { PropTypes } from 'prop-types';
 import { useState } from 'react';
-import {
-	GifGrid,
-	CounterWithCustomHook,
-	SimpleForm,
-	FormWithCustomHook,
-	MultipleCustomHooks,
-	Layout,
-} from './components';
 
-export const Inicio = ({ value }) => {
-	const onAddCatalogo = (newCatalogo) => {
-		console.log(newCatalogo);
-		setCatalogos([newCatalogo, ...catalogos]);
-	};
-	const [catalogos, setCatalogos] = useState(['jsx']);
+export const Inicio = () => {
+	// const onAddCatalogo = (newCatalogo) => {
+	// 	console.log(newCatalogo);
+	// 	setCatalogos([newCatalogo, ...catalogos]);
+	// };
+	// const [catalogos, setCatalogos] = useState(['jsx']);
 
 	return (
-		<>
-			Inicio
+		<div style={{ width: '100%', height: '400px' }}>
 			{/* <p>{value}</p>
       <span>----------------------------</span>
       <AddCatalogo onNewCatalogo={(value) => onAddCatalogo(value)} />
@@ -31,11 +22,11 @@ export const Inicio = ({ value }) => {
 			{/* <SimpleForm /> */}
 			{/* <FormWithCustomHook /> */}
 			{/* <MultipleCustomHooks /> */}
-			<Layout />
-		</>
+			{/* <Layout /> */}
+		</div>
 	);
 };
 
-Inicio.propTypes = {
-	value: PropTypes.number,
-};
+// Inicio.propTypes = {
+// 	value: PropTypes.number,
+// };
